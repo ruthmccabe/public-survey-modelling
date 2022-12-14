@@ -442,7 +442,7 @@ ggplot(reliability_how_wide_melt %>% filter(!is.na(how)),
 ggsave("Plots/SupFig13.png",width=9,height=7)
 
 
-
+detach("package:plyr", unload=TRUE)
 
 
 
