@@ -1,9 +1,8 @@
 ### Awareness of transmission modelling
 
-### covering the following Qs:
-
-### How were you aware of transmission modelling? (prior and during)
-### How much do you know about how transmission modelling has been used throughout the COVID-19 pandemic?
+## Questions covered:
+## How were you aware of transmission modelling? (prior and during)
+## How much do you know about how transmission modelling has been used throughout the COVID-19 pandemic?
 
 prolific <- read_excel("Data/responses_prolific.xlsx") %>% data.frame() %>%
   select(-c(Start.time,Completion.time,Email,consent_1,consent_2))
