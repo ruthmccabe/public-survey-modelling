@@ -1,4 +1,10 @@
-### respondent demographics
+### Respondent demographics
+
+## Questions covered:
+## Please select your age.
+## Please select your gender.
+## Please select the option below which most closely matches the sector you work in.
+## Have you been vaccinated for COVID-19?
 
 library(tidyverse)
 library(readxl)
