@@ -1,4 +1,4 @@
-### demographics
+### respondent demographics
 
 library(tidyverse)
 library(readxl)
