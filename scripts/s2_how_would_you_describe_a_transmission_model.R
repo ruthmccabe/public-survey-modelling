@@ -89,7 +89,7 @@ ggplot(description_confidence_summary,
        fill="What level of \nconfidence do \nyou have in \nyour description?")+
   theme(strip.background = element_rect(fill = "white", color = "black"))+
   guides(color=guide_legend(order=1),fill=guide_legend(order=1))
-ggsave("Plots/SupFig16.png",width=7,height=5)
+ggsave("outputs/SupFig16.png",width=7,height=5)
 
 
 ### Supplementary Table 27

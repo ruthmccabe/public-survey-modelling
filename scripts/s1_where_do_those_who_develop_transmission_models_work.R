@@ -55,7 +55,7 @@ ggplot(workplace_long_summary_tidy,aes(x=text_summarised,y=100*total/sample_size
   theme(strip.background = element_rect(fill="white"),
         legend.position = "bottom")+
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8))
-ggsave("Plots/SupFig15.png",width=8.5,height=5)
+ggsave("outputs/SupFig15.png",width=8.5,height=5)
 
 
 ## Supplementary Table 24
