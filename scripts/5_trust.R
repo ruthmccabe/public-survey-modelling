@@ -214,7 +214,7 @@ ggsave("outputs/Fig4_updated.png",width=10.5,height=6.5)
 
 
 
-## Supplementary Figure 9
+## Supplementary Figure 12
 government_trust_reliability <- rbind(all_responses %>%
                                         dplyr::select(platform_label_generic,
                                                       prior_government_trust,prior_reliability_1_10) %>%
@@ -247,10 +247,10 @@ ggplot(government_trust_reliability %>% filter(!is.na(reliability_1_10),
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8))+
   labs(x="Time period",
        y="On a scale of 1-10 with 1 being “extremely unreliable” \nand 10 being “extremely reliable” how do you feel \nabout the use of transmission models in informing \npublic health policy?",col="")
-ggsave("outputs/SupFig9.png",width=7,height=5)
+ggsave("outputs/SupFig12.png",width=7,height=5)
 
 
-## Supplementary Table 13
+## Supplementary Table 14
 
 government_trust_reliability %>% group_by(platform_label_generic,time,government_trust) %>%
   summarise(median = median(reliability_1_10,na.rm = TRUE),
@@ -364,7 +364,7 @@ prop.test(x=c(changing_opinion %>% filter(platform_label=="Prolific Academic",
 
 
 
-## Supplementary Table 14
+## Supplementary Table 15
 changing_opinion <- changing_opinion %>%
   mutate(prior_government_trust_numeric = ifelse(prior_government_trust=="High level of trust",1,
                                                  ifelse(prior_government_trust=="Moderate level of trust",0,
@@ -379,7 +379,7 @@ changing_opinion <- changing_opinion %>%
 
 table(changing_opinion$platform_label,changing_opinion$diff)
 
-## Supplementary Table 15
+## Supplementary Table 16
 
 government_trust_melt <- government_trust_melt %>%
   mutate(government_trust_numeric = ifelse(government_trust=="High level of trust",1,
@@ -412,7 +412,7 @@ summary(m4)
 anova(m4,test="Chisq")
 
 
-## Supplementary Table 16
+## Supplementary Table 17
 
 m5 <- lm(diff~age_group+gender,
          data=changing_opinion %>% filter(platform_label=="Prolific Academic"))
@@ -426,7 +426,7 @@ summary(m6)
 anova(m6,test="Chisq")
 
 
-## Supplementary Table 17
+## Supplementary Table 18
 ### now accounting for awareness
 government_trust_melt <- government_trust_melt %>%
   mutate(government_trust_numeric = ifelse(government_trust=="High level of trust",1,
@@ -466,7 +466,7 @@ anova(m10,test="Chisq")
 
 
 
-## Supplementary Table 18
+## Supplementary Table 19
 government_trust_awareness <- rbind(all_responses %>%
                                       dplyr::select(platform_label_generic,
                                                     prior_government_trust,prior_awareness_use_in_policy) %>%
@@ -500,7 +500,7 @@ government_trust_awareness_summary <- government_trust_awareness %>%
 government_trust_awareness_summary
 
 
-## Supplementary Figure 10
+## Supplementary Figure 13
 ggplot(government_trust_awareness_summary %>% filter(!is.na(awareness_use_in_policy)),
        aes(x=time,y=perc,fill=government_trust))+
   geom_col()+
@@ -513,7 +513,7 @@ ggplot(government_trust_awareness_summary %>% filter(!is.na(awareness_use_in_pol
   labs(x="Time",y="Percentage of respondents (%)",
        fill="How much did you \ntrust government \nadvice regarding \npublic health issues?")+
   scale_x_discrete(labels = function(x) str_wrap(x, width = 10))
-ggsave("outputs/SupFig10.png",width=7,height=5)
+ggsave("outputs/SupFig13.png",width=7,height=5)
 
 
 # ## make into alluvial plot
@@ -569,7 +569,7 @@ ggsave("outputs/SupFig10.png",width=7,height=5)
 #             ggtitle("How much did you trust government advice regarding \npublic health issues?\n")
 
 
-## Supplementary Tables 19 - 21
+## Supplementary Tables 20 - 22
 trust_changing_advice <- all_responses %>% dplyr::select(platform_label,
                                                           trust_changing_advice,
                                                          prior_awareness_use_in_policy,
@@ -599,7 +599,7 @@ trust_changing_advice <- all_responses %>% dplyr::select(platform_label,
                                                          ifelse(during_government_trust=="No trust whatsoever",-1,
                                                                 NA))))
 
-## Supplementary Table 19
+## Supplementary Table 20
 m11 <- lm(trust_changing_advice_numeric~age_group+gender,
           data=trust_changing_advice %>% filter(platform_label=="Prolific Academic"))
 summary(m11)
@@ -610,7 +610,7 @@ m12 <- lm(trust_changing_advice_numeric~age_group+gender,
 summary(m12)
 anova(m12,test="Chisq")
 
-## Supplementary Table 20
+## Supplementary Table 21
 m13 <- lm(trust_changing_advice_numeric~age_group+gender+prior_awareness_use_in_policy_numeric+during_awareness_use_in_policy_numeric,
           data=trust_changing_advice %>% filter(platform_label=="Prolific Academic"))
 summary(m13)
@@ -621,7 +621,7 @@ m14 <- lm(trust_changing_advice_numeric~age_group+gender+prior_awareness_use_in_
 summary(m14)
 anova(m14,test="Chisq")
 
-## Supplementary Table 21
+## Supplementary Table 22
 m15 <- lm(trust_changing_advice_numeric~age_group+gender+prior_government_trust_numeric+during_government_trust_numeric,
           data=trust_changing_advice %>% filter(platform_label=="Prolific Academic"))
 summary(m15)
@@ -632,7 +632,7 @@ m16 <- lm(trust_changing_advice_numeric~age_group+gender+prior_government_trust_
 summary(m16)
 anova(m16,test="Chisq")
 
-## Supplementary Figure 11
+## Supplementary Figure 14
 changing_advice_reliability <- rbind(all_responses %>% 
                                        dplyr::select(platform_label_generic,
                                                      trust_changing_advice,prior_reliability_1_10) %>%
@@ -664,11 +664,11 @@ ggplot(changing_advice_reliability %>% filter(!is.na(reliability_1_10),
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8))+
   labs(x="Time period",
        y="On a scale of 1-10 with 1 being “extremely unreliable” \nand 10 being “extremely reliable” how do you feel \nabout the use of transmission models in informing \npublic health policy?",col="")
-ggsave("outputs/SupFig11.png",width=8,height=5)
+ggsave("outputs/SupFig14.png",width=8,height=5)
 
 
 
-## Supplementary Figure 12
+## Supplementary Figure 15
 trust_df <- rbind(all_responses %>% 
                     dplyr::select(platform_label_generic,prior_government_trust,trust_changing_advice) %>%
                     mutate(time="Prior to the COVID-19 pandemic") %>%
@@ -713,9 +713,9 @@ ggplot(trust_df_summary %>% filter(government_trust!="Did not answer"),
        fill="How do you feel when government \nadvice changes based on new \nscientific evidence?")+
   theme(strip.background = element_rect(fill = "white", color = "black"))+
   guides(color=guide_legend(order=1),fill=guide_legend(order=1))
-ggsave("outputs/SupFig12.png",width=8,height=5)
+ggsave("outputs/SupFig15.png",width=8,height=5)
 
-## Supplementary Table 22
+## Supplementary Table 23
 trust_df_summary
 
 

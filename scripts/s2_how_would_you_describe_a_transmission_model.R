@@ -44,7 +44,8 @@ model_description %>% group_by(model_description_confidence,platform) %>%
 
 
 
-### Supplementary Figure 16
+### Supplementary Figure 17
+
 # description_confidence_summary <- model_description %>% 
 #   group_by(platform_label_generic,theme,relevant,model_description_confidence) %>%
 #   summarise(number = length(platform_label_generic)) %>% ungroup() %>%
@@ -89,7 +90,25 @@ ggplot(description_confidence_summary,
        fill="What level of \nconfidence do \nyou have in \nyour description?")+
   theme(strip.background = element_rect(fill = "white", color = "black"))+
   guides(color=guide_legend(order=1),fill=guide_legend(order=1))
-ggsave("outputs/SupFig16.png",width=7,height=5)
+ggsave("outputs/SupFig17.png",width=7,height=5)
+
+
+
+### Supplementary Table 26
+
+all_responses_lm <- all_responses %>% dplyr::select(model_description_confidence,age_group,gender,platform) %>%
+  mutate(confidence_number = ifelse(model_description_confidence=="Very confident",1,
+                                    ifelse(model_description_confidence=="Moderately confident",0,
+                                           ifelse(model_description_confidence=="Not at all confident",-1,NA))))
+
+m1 <- lm(confidence_number~age_group+gender,data=all_responses_lm %>% filter(platform=="prolific"))
+summary(m1)
+anova(m1,test="Chisq")
+
+m2 <- lm(confidence_number~age_group+gender,data=all_responses_lm %>% filter(platform=="twitter"))
+summary(m2)
+anova(m2,test="Chisq")
+
 
 
 ### Supplementary Table 27
@@ -134,18 +153,4 @@ prop.test(x = c(model_description %>% filter(platform=="Prolific Academic",model
                                              model_description_confidence=="Very confident") %>% nrow()))
 
 
-### Supplementary Table 28
-
-all_responses_lm <- all_responses %>% dplyr::select(model_description_confidence,age_group,gender,platform) %>%
-  mutate(confidence_number = ifelse(model_description_confidence=="Very confident",1,
-                                    ifelse(model_description_confidence=="Moderately confident",0,
-                                           ifelse(model_description_confidence=="Not at all confident",-1,NA))))
-
-m1 <- lm(confidence_number~age_group+gender,data=all_responses_lm %>% filter(platform=="prolific"))
-summary(m1)
-anova(m1,test="Chisq")
-
-m2 <- lm(confidence_number~age_group+gender,data=all_responses_lm %>% filter(platform=="twitter"))
-summary(m2)
-anova(m2,test="Chisq")
 

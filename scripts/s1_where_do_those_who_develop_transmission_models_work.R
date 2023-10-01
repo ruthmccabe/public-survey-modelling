@@ -17,7 +17,7 @@ workplace_long <- gather(workplace,
                        levels=c("Prior to the COVID-19 pandemic","During the COVID-19 pandemic")),
          text = factor(text))
 
-## Supplementary Figure 15
+## Supplementary Figure 16
 workplace_long_summary <- workplace_long %>% group_by(platform_label,platform_label_generic,
                                                       time,text,.drop=FALSE) %>%
   summarise("total" = length(text)) %>%
@@ -55,10 +55,10 @@ ggplot(workplace_long_summary_tidy,aes(x=text_summarised,y=100*total/sample_size
   theme(strip.background = element_rect(fill="white"),
         legend.position = "bottom")+
   scale_x_discrete(labels = function(x) str_wrap(x, width = 8))
-ggsave("outputs/SupFig15.png",width=8.5,height=5)
+ggsave("outputs/SupFig16.png",width=8.5,height=5)
 
 
-## Supplementary Table 24
+## Supplementary Table 25
 workplace_long_summary_tidy %>% data.frame() %>% arrange(text_summarised) %>% mutate(perc = total/sample_size *100)
 
 ## SAGE specifically
@@ -68,8 +68,6 @@ workplace_long_summary %>% filter(text=="SAGE")
 workplace_long_summary %>% filter(text=="NHS")
 
 
-
-## Supplementary Table 25
 
 # need to create binary indicators for all categories 
 ## ifelse statements on w1-w4 using grepl
@@ -315,7 +313,7 @@ wilcox.test(x=workplace_numeric %>% filter(platform_label=="Twitter",
 
 
 
-## Supplementary Table 26
+## Supplementary Table 25
 
 ## Prior to the COVID-19 pandemic 
 

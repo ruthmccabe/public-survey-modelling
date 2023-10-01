@@ -58,7 +58,7 @@ responsibility_to_inform <- responsibility_to_inform %>%
 responsibility_to_inform
 
 
-## Supplementary Figure 13
+## Supplementary Figure 10
 responsibility_to_inform <- responsibility_to_inform %>%
   mutate(platform_label_generic = ifelse(platform=="prolific","Online panel","Social media"))
 
@@ -73,10 +73,10 @@ ggplot(responsibility_to_inform,
   scale_x_discrete(labels = function(x) str_wrap(x, width = 12))+
   labs(y="Percentage of respondents (%)",
        x="Who do you think has the responsibility of ensuring that the public \nare informed about the use of modelling in policy decisions, \nparticularly in the COVID-19 pandemic?",fill="")
-ggsave("outputs/SupFig13.png",height=4,width=5)
+ggsave("outputs/SupFig10.png",height=4,width=5)
 
 
-## Supplementary Table 23
+## Supplementary Table 13
 prop.test(x=c(responsibility_to_inform %>% filter(platform_label=="Prolific Academic",
                                                   response=="The government") %>% select(count) %>% unlist(),
               responsibility_to_inform %>% filter(platform_label=="Twitter",
@@ -153,7 +153,7 @@ prop.test(x=c(responsibility_to_inform %>% filter(platform_label=="Prolific Acad
 
 
 
-## Supplementary Figure 14
+## Supplementary Figure 11
 responsibility_to_inform_awareness <- rbind(data.frame(cbind(
   "response"=rownames(as.matrix(unlist(strsplit(as.matrix(all_responses %>%
                                                             filter(platform=="prolific",
@@ -279,5 +279,5 @@ ggplot(responsibility_to_inform_awareness,
   scale_x_discrete(labels = function(x) str_wrap(x, width = 12))+
   labs(y="Percentage of respondents (%)",
        x="Who do you think has the responsibility of ensuring that the public \nare informed about the use of modelling in policy decisions, \nparticularly in the COVID-19 pandemic?",fill="")
-ggsave("outputs/SupFig14.png",height=7,width=5)
+ggsave("outputs/SupFig11.png",height=7,width=5)
 
