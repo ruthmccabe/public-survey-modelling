@@ -210,7 +210,7 @@ plot_grid(ggplot(data = trust_alluvial %>% filter(!is.na(prior_government_trust)
     ggtitle("How do you feel when government \nadvice changes based on new \nscientific evidence?"),
   align="hv",axis="tb",rel_widths = c(2.25,1),labels="AUTO"
   )
-ggsave("outputs/Fig4_updated.png",width=10.5,height=6.5)
+ggsave("outputs/Fig4_raw.png",width=10.5,height=6.5)
 
 
 

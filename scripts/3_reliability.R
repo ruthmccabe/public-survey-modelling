@@ -351,7 +351,7 @@ plot_grid(ggplot(data = reliability_alluvial_grouped %>% filter(prior_reliabilit
             annotate("text",x=-4.8,y=40,label="Reliability score decreased \nduring the pandemic")+
             annotate("segment", x = -0.5, xend = -10, y = 40, yend = 40, colour = "black", size=1, alpha=0.6, arrow=arrow()),
           nrow=2,rel_heights = c(2,1),align="hv",axis="l",labels="AUTO")
-ggsave("outputs/Fig3_updated.png",height=9,width=7)
+ggsave("outputs/Fig3.png",height=9,width=7)
 
 
 

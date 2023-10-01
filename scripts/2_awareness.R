@@ -304,7 +304,7 @@ ggplot(data = awareness_alluvial %>% filter(prior_awareness_use_in_policy!="Did 
         axis.line = element_blank(),strip.text = element_text(size=12),
         axis.text.x = element_text(colour="black"))+
   ggtitle("Were you aware of the use of transmission models in informing public health policy?")
-ggsave("outputs/Fig2_updated.png",height=6,width=8)
+ggsave("outputs/Fig2.png",height=6,width=8)
 # can then use paint to get the finish that we want 
 
 # awareness_alluvial_2 <- gather(awareness_alluvial,
